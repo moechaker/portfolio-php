@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="img/favicon.png" type="image/png">
-        <title>Intermediate PHP</title>
+        <title>Grade Calculator</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="vendors/linericon/style.css">
@@ -31,12 +31,11 @@
             	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
 				<div class="container">
 					<div class="banner_content text-center">
-						<h2>Intermediate PHP</h2>
+						<h2>Rock Paper Scissors Game</h2>
 						<!-- <div class="page_link">
 							<a href="index.php">Home</a>
 							<a href="portfolio.php">Portfolio</a>
 						</div> -->
-						
 					</div>
 				</div>
             </div>
@@ -46,9 +45,48 @@
         <!--================Projects Area =================-->
         <section class="projects_area p_120">
         	<div class="container">
-        			<p><a href="tuition.php">Tuition Calculator</a></p>
-        			<p><a href="grade.php">Grade Calculator</a></p>
-        			<p><a href="rps.php">Rock Paper Scissor Game</a></p>
+<?php
+
+    $humanChoice = substr(filter_input(INPUT_POST, 'choice', FILTER_SANITIZE_NUMBER_INT),0,1);
+    $computerChoice = rand(1,3);
+
+    if($humanChoice == 1){
+        echo "<p><img src=\"img/rock1.png\" alt=\"Rock\">&nbsp";
+    }elseif($humanChoice == 2){
+        echo "<p><img src=\"img/paper1.png\" alt=\"Paper\">&nbsp";
+    }else{
+        echo "<p><img src=\"img/scissors1.png\" alt=\"Scissors\">&nbsp";
+    }
+
+    if($computerChoice == 1){
+        echo "<img src=\"img/rock2.png\" alt=\"Rock\"></p>";
+    }elseif($computerChoice == 2){
+        echo "<img src=\"img/paper2.png\" alt=\"Paper\"></p>";
+    }else{
+        echo "<img src=\"img/scissors2.png\" alt=\"Scissors\"></p>";
+    }
+
+    if($humanChoice == $computerChoice){
+        echo "<p>It's a draw</p>";
+    }elseif($humanChoice == 1 and $computerChoice == 2){
+        echo "<p>You lose!</p>";
+    }elseif($humanChoice == 1 and $computerChoice == 3){
+        echo "<p>You Win!</p>";
+    }
+
+    if($humanChoice == 2 and $computerChoice == 1){
+        echo "<p>You Win!</p>";
+    }elseif($humanChoice == 2 and $computerChoice == 3){
+        echo "<p>You Lose!</p>";
+    }
+
+    if($humanChoice == 3 and $computerChoice == 1){
+        echo "<p>You Lose!</p>";
+    }elseif($humanChoice == 3 and $computerChoice == 2){
+        echo "<p>You Win!</p>";
+    }
+
+?>
         	</div>
         </section>
         <!--================End Projects Area =================-->

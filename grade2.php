@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="img/favicon.png" type="image/png">
-        <title>Intermediate PHP</title>
+        <title>Grade Calculator</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="vendors/linericon/style.css">
@@ -31,12 +31,11 @@
             	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
 				<div class="container">
 					<div class="banner_content text-center">
-						<h2>Intermediate PHP</h2>
+						<h2>Grade Calculator</h2>
 						<!-- <div class="page_link">
 							<a href="index.php">Home</a>
 							<a href="portfolio.php">Portfolio</a>
 						</div> -->
-						
 					</div>
 				</div>
             </div>
@@ -46,9 +45,38 @@
         <!--================Projects Area =================-->
         <section class="projects_area p_120">
         	<div class="container">
-        			<p><a href="tuition.php">Tuition Calculator</a></p>
-        			<p><a href="grade.php">Grade Calculator</a></p>
-        			<p><a href="rps.php">Rock Paper Scissor Game</a></p>
+<?php
+
+    $hw1 = substr(filter_input(INPUT_POST, 'hw1', FILTER_SANITIZE_NUMBER_INT),0,3);
+    $hw2 = substr(filter_input(INPUT_POST, 'hw2', FILTER_SANITIZE_NUMBER_INT),0,3);
+    $hw3 = substr(filter_input(INPUT_POST, 'hw3', FILTER_SANITIZE_NUMBER_INT),0,3);
+    $q1 = substr(filter_input(INPUT_POST, 'q1', FILTER_SANITIZE_NUMBER_INT),0,3);
+    $q2 = substr(filter_input(INPUT_POST, 'q2', FILTER_SANITIZE_NUMBER_INT),0,3);
+    $q3 = substr(filter_input(INPUT_POST, 'q3', FILTER_SANITIZE_NUMBER_INT),0,3);
+    $q4 = substr(filter_input(INPUT_POST, 'q4', FILTER_SANITIZE_NUMBER_INT),0,3);
+    $q5 = substr(filter_input(INPUT_POST, 'q5', FILTER_SANITIZE_NUMBER_INT),0,3);
+    $exam1 = substr(filter_input(INPUT_POST, 'exam1', FILTER_SANITIZE_NUMBER_INT),0,3);
+
+    $grade = (($hw1+$hw2+$hw3+$q1+$q2+$q3+$q4+$q5+$exam1)/425)*100;
+
+    echo "<p>Current course grade is " . round($grade,0);
+
+    if($grade >= 90){
+        echo "%, which is an A.";
+    }elseif($grade >= 80){
+        echo "%, which is a B.";
+    }elseif($grade >= 70){
+        echo "%, which is a C.";
+    }elseif($grade >= 60){
+        echo "%, which is a D.";
+    }else{
+        echo "%, which is an E.";
+    }
+    
+
+
+
+?>
         	</div>
         </section>
         <!--================End Projects Area =================-->
